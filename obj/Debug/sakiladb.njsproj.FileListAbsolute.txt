@@ -1,0 +1,2 @@
+D:\Learning\NodeLessions\sakiladb\obj\Debug\sakiladb.njsprojResolveAssemblyReference.cache
+D:\Learning\NodeLessions\sakiladb\bin\Microsoft.NodejsTools.WebRole.dll
