@@ -64,7 +64,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   staff.associate = function(models){
-    staff.belongsTo(models.store);
+    staff.belongsTo(models.store, {foreignKey: 'store_id'});
+    staff.belongsTo(models.address, {foreignKey: 'address_id'});
   }
 
   return staff;

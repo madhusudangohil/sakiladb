@@ -51,7 +51,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   address.associate =  function(models){
-    address.belongsTo(models.city, {foreignKey: 'city_id'});
+    address.belongsTo(models.city, {foreignKey: 'city_id'}); //city_id field will be added on address model
+    address.hasOne(models.store, {foreignKey: 'address_id'}); //address_id field will be added on store model
+    address.hasOne(models.staff, {foreignKey: 'address_id'});
   }
   return address;
 };
