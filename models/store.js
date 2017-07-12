@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('store', {
+  const store = sequelize.define('store', {
     store_id: {
       type: DataTypes.INTEGER(3).UNSIGNED,
       allowNull: false,
@@ -31,6 +31,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'store'
+    tableName: 'store',
+    timestamps: false 
   });
+
+  store.associate = function(models){
+    store.hasMany(models.staff);
+    store.belongsToMany(models.film, {through:models.inventory});
+    store.hasOne(models.address, {foreignKey: 'address_id'});
+  }
+
+  return store;
 };

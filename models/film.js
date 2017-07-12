@@ -80,6 +80,7 @@ module.exports = function(sequelize, DataTypes) {
   film.associate = models => {
          console.log('association');
          film.belongsToMany(models.actor, {through:'film_actor', as: 'fa', foreignKey:'film_id'})     
+         film.belongsToMany(models.store, {through: models.inventory})
       }
   //film.belongsToMany(actor, {as:'film_actor', foreignKey:'film_id', through: filmActor});
   return film;

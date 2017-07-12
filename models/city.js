@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('city', {
+  const city = sequelize.define('city', {
     city_id: {
       type: DataTypes.INTEGER(5).UNSIGNED,
       allowNull: false,
@@ -26,6 +26,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'city'
+    tableName: 'city',
+    timestamps: false 
   });
+
+  city.associate = function(models){
+    city.belongsTo(models.country, {foreignKey: 'country_id'});
+    city.hasMany(models.address, {foreignKey: 'city_id'});
+  }
+  return city;
 };

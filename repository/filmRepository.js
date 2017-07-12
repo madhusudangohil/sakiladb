@@ -10,7 +10,7 @@ function findByTitle(title) {
 } 
 
 function findFilmsByActor(firstName, lastName) {    
-    return db.actor.findAll({
+    return db.actor.findOne({
              where: {
                 first_name: firstName,   
                 last_name: lastName          

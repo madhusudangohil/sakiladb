@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('staff', {
+  const staff = sequelize.define('staff', {
     staff_id: {
       type: DataTypes.INTEGER(3).UNSIGNED,
       allowNull: false,
@@ -59,6 +59,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'staff'
+    tableName: 'staff',
+    timestamps: false 
   });
+
+  staff.associate = function(models){
+    staff.belongsTo(models.store);
+  }
+
+  return staff;
 };
