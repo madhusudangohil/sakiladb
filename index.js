@@ -62,8 +62,13 @@ storeRepo.getAllStaffMemberForAStoreByCity('Lethbridge').then(f=>{
 
 storeRepo.findStaffByStoreId(1).then(f=>{
     console.log(f.staffs.length);
-});*/
+});
 
 actorRepo.findActorsByFilmId(1).then(f=>{
     console.log(f.length);
+});
+*/
+
+storeRepo.findByTitleInInventory('ACADEMY DINOSAUR').then(f=> {
+    console.log(f.films[0].title);
 });

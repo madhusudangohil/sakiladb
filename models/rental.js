@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('rental', {
+  const rental = sequelize.define('rental', {
     rental_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -46,6 +46,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'rental'
+    tableName: 'rental',
+    timestamps: false
   });
+
+  rental.associate = function(models){
+    rental.belongsTo(models.customer, {foreignKey: 'customer_id'});
+  }
+
+  return rental;
 };

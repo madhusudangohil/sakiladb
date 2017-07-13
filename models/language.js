@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('language', {
+  const language = sequelize.define('language', {
     language_id: {
       type: DataTypes.INTEGER(3).UNSIGNED,
       allowNull: false,
@@ -18,6 +18,12 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'language'
+    tableName: 'language',
+    timestamps: false 
   });
+
+  language.assoicate = function(models){
+    language.hasMany(models.film, {foreignKey: 'language_id'});
+  }
+  return language;
 };

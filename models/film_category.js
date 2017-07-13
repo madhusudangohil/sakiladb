@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('film_category', {
+  const film_category = sequelize.define('film_category', {
     film_id: {
       type: DataTypes.INTEGER(5).UNSIGNED,
       allowNull: false,
@@ -26,6 +26,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'film_category'
+    tableName: 'film_category',
+    timestamps: false 
   });
+
+  return film_category;
 };

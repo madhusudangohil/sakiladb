@@ -76,6 +76,13 @@ function getAllStaffMemberForAStoreByCity(city){
     });
 }
 
+function findFilmByTitleInInventory(title){
+    return db.store.findOne({
+        include: [{model: db.film, through: db.inventory, where: {
+            title: title
+        } }]
+    })
+}
 
 
 module.exports = {
@@ -83,5 +90,6 @@ module.exports = {
     findStoreByCity: findStoreByCity,
     findStoreByCountry: findStoreByCountry,
     getAllStaffMemberForAStoreByCity: getAllStaffMemberForAStoreByCity,
-    findStaffByStoreId: findStaffByStoreId
+    findStaffByStoreId: findStaffByStoreId,
+    findFilmByTitleInInventory: findFilmByTitleInInventory
 }

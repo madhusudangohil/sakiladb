@@ -79,8 +79,10 @@ module.exports = function(sequelize, DataTypes) {
 
   film.associate = models => {
          console.log('association');
-         film.belongsToMany(models.actor, {through:'film_actor', as: 'fa', foreignKey:'film_id'})     
-         film.belongsToMany(models.store, {through: models.inventory})
+         film.belongsToMany(models.actor, {through:'film_actor', as: 'fa', foreignKey:'film_id'});
+         film.belongsToMany(models.store, {through: models.inventory, foreignKey: 'film_id'});
+         film.belongsTo(models.language, {foreignKey: 'language_id'});
+         film.belongsToMany(models.category, {through:'film_category', as: 'fcat', foreignKey:'film_id'});
       }
   //film.belongsToMany(actor, {as:'film_actor', foreignKey:'film_id', through: filmActor});
   return film;

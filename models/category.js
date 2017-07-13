@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('category', {
+module.exports = function (sequelize, DataTypes) {
+  const category = sequelize.define('category', {
     category_id: {
       type: DataTypes.INTEGER(3).UNSIGNED,
       allowNull: false,
@@ -18,6 +18,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'category'
+    tableName: 'category',
+    timestamps: false 
   });
+
+  category.associate = function(models){
+    category.belongsToMany(models.film, {through: 'film_category', as:'fcat', foreignKey: 'category_id'});
+  }
+
+  return category;
 };

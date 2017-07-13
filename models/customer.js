@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('customer', {
+  const customer = sequelize.define('customer', {
     customer_id: {
       type: DataTypes.INTEGER(5).UNSIGNED,
       allowNull: false,
@@ -51,6 +51,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'customer'
+    tableName: 'customer',
+    timestamps: false,
   });
+
+  customer.associate = function(models){
+    customer.hasMany(models.rental, {foreignKey: 'customer_id'});
+  }
+
+  return customer;
 };

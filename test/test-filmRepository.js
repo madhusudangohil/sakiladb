@@ -4,7 +4,7 @@ describe('filmRepository', function () {
     describe('find by partial title name ', function () {
         it('should return three records for title NECKLACE', function () {
             return repo.findByTitle('NECKLACE').then(f => {
-                expect(f).to.have.lengthOf(2);
+                expect(f).to.have.length(2);
             });
         })
 
@@ -31,4 +31,23 @@ describe('filmRepository', function () {
         })
 
     });
+
+    describe('findFilmsLanguage', function(){
+        it('should return list of films', function(){
+                 return repo.findFilmsByLanguage(1).then(fl=>{
+                expect(fl).to.have.length.above(1);
+            })
+        });
+            
+    });
+
+    describe('findFilmsByCategory', function(){
+        it('should return list of films for a category', function(){
+                 return repo.findFilmsByCategory(6).then(fl=>{
+                expect(fl).to.have.length.above(1);
+            })
+        });
+            
+    });
+      
 });

@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('inventory', {
+  const inventory = sequelize.define('inventory', {
     inventory_id: {
       type: DataTypes.INTEGER(8).UNSIGNED,
       allowNull: false,
@@ -30,6 +30,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'inventory'
+    tableName: 'inventory',
+    timestamps: false
   });
+
+  return inventory;
 };
