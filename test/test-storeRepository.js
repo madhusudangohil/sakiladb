@@ -88,4 +88,11 @@ describe('storeRepository', function () {
         });
     });
 
+    describe('findStaffByStore', function () {
+        it('should return list of staff for a store', function(){
+            return repo.findStaffByStoreId(1).then(function(f){
+                expect(f.staffs.length).to.equal(1);
+            });
+        });
+    });
 })

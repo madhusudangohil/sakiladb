@@ -1,5 +1,5 @@
 let repo = require('./repository/filmRepository');
-
+let actorRepo = require('./repository/actorRepository');
 let storeRepo = require('./repository/storeRepository');
 
 /*repo.findByTitle('NECKLACE').then(f=>{
@@ -52,10 +52,18 @@ storeRepo.findStoreByCountry('Canada').then(f=>{
         })
     });
 });
-*/
+
 storeRepo.getAllStaffMemberForAStoreByCity('Lethbridge').then(f=>{
     f.forEach(function(e,i){
         console.log(e.first_name);
     })
     
+});
+
+storeRepo.findStaffByStoreId(1).then(f=>{
+    console.log(f.staffs.length);
+});*/
+
+actorRepo.findActorsByFilmId(1).then(f=>{
+    console.log(f.length);
 });

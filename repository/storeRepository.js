@@ -1,5 +1,15 @@
 let db = require('../models');
 
+function findStaffByStoreId(id) {
+    return db.store.findOne({
+        where:{store_id: id},
+        include: [{
+            model: db.staff,
+            required: true           
+        }]
+    });
+}
+
 function findStoreByPostalCode(code) {
     return db.store.findOne({
         include: [{
@@ -35,7 +45,7 @@ function findStoreByCountry(country) {
                 model: db.city,
                 required: true,
                 include: [{
-                    model: db.country,
+                    model: db.country,                    
                     where: {
                         country: country
                     }
@@ -66,9 +76,12 @@ function getAllStaffMemberForAStoreByCity(city){
     });
 }
 
+
+
 module.exports = {
     findStoreByPostalCode: findStoreByPostalCode,
     findStoreByCity: findStoreByCity,
     findStoreByCountry: findStoreByCountry,
-    getAllStaffMemberForAStoreByCity: getAllStaffMemberForAStoreByCity
+    getAllStaffMemberForAStoreByCity: getAllStaffMemberForAStoreByCity,
+    findStaffByStoreId: findStaffByStoreId
 }
