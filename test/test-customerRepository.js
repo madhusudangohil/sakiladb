@@ -1,5 +1,5 @@
 let expect = require('chai').expect;
-let repo = require('../repository/customerRepository');
+let repo = require('../repository/customer');
 
 describe('customerRepository', function(){
     describe('findRentalHistoryByCustomerId', function(){

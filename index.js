@@ -1,11 +1,11 @@
-let repo = require('./repository/filmRepository');
-let actorRepo = require('./repository/actorRepository');
+let repo = require('./repository/film');
+let actorRepo = require('./repository/actor');
 let storeRepo = require('./repository/storeRepository');
 
-/*repo.findByTitle('NECKLACE').then(f=>{
-             console.log(f.title);
+repo.findByTitle('NECKLACE').then(f=>{
+             console.log(f[0].title);
          });
-
+/*
 repo.findFilmsByActor('NICK', 'WAHLBERG').then( f => {
    f.getFa().then(function(film){
             film.forEach(function(e,i){
@@ -64,11 +64,14 @@ storeRepo.findStaffByStoreId(1).then(f=>{
     console.log(f.staffs.length);
 });
 
-actorRepo.findActorsByFilmId(1).then(f=>{
-    console.log(f.length);
-});
-*/
 
 storeRepo.findByTitleInInventory('ACADEMY DINOSAUR').then(f=> {
     console.log(f.films[0].title);
+});
+
+*/
+
+
+actorRepo.findActorsByFilmId(1).then(f=>{
+    console.log(f.length);
 });

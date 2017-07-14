@@ -1,5 +1,5 @@
 let expect = require('chai').expect;
-let repo = require('../repository/storeRepository');
+let repo = require('../repository/store');
 
 describe('storeRepository', function () {
     describe('findStoreByPostalCode', function () {

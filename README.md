@@ -1,6 +1,8 @@
 # sakiladb
 demo of using many to many 
 
+#require 
+whenever you specify require with just folder name, i.e. require('../models'), it will look for index.js file, here you can provide exports from different javascript files.
 
 # debugging unit test in vs code 
 add following to the debug configuration launch.json

@@ -1,14 +1,6 @@
-let db = require('../models');
+let db = require('../../models');
 
-function findByName(name) {
-    return db.actor.findAll({
-        where: {
-            first_name: name,
-        }
-    });
-}
-
-function findActorsByFilmId(id) {
+module.exports = function (id) {
     return db.actor.findAll({
         attributes: ['actor_id', 'first_name', 'last_name'],
         include: [{
@@ -21,9 +13,4 @@ function findActorsByFilmId(id) {
             attributes: ['film_id', 'title']
         }]
     })
-}
-
-module.exports = {
-    findByName: findByName,
-    findActorsByFilmId: findActorsByFilmId,
 }

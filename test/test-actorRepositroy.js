@@ -1,5 +1,5 @@
 let expect = require('chai').expect;
-let repo = require('../repository/actorRepository');
+let repo = require('../repository/actor');
 
 describe('actorRepository', function () {
     describe('findByName', function () {
@@ -18,7 +18,7 @@ describe('actorRepository', function () {
 
     describe('findActorsByFilmId', function(){
         it('should return list of actors for a film', function(){
-            return repo.findActorsByFilmId(1).then(a=> {
+            return repo.findByFilmId(1).then(a=> {
                 expect(a).to.have.length.above(1);
             })
         });

@@ -1,5 +1,5 @@
 let expect = require('chai').expect;
-let repo = require('../repository/filmRepository');
+let repo = require('../repository/film');
 describe('filmRepository', function () {
     describe('find by partial title name ', function () {
         it('should return three records for title NECKLACE', function () {
@@ -17,13 +17,13 @@ describe('filmRepository', function () {
 
     describe('find films by actor first name', function () {
         it('should return one result for actor', function () {
-            return repo.findFilmsByActor('NICK', 'WAHLBERG').then(f => {
+            return repo.findByActor('NICK', 'WAHLBERG').then(f => {
                 expect(f.first_name).to.equal('NICK');
             });
         })
 
         it('should return films for actor', function () {
-            return repo.findFilmsByActor('NICK', 'WAHLBERG').then(f => {
+            return repo.findByActor('NICK', 'WAHLBERG').then(f => {
                 f.getFa().then(function (films) {
                     expect(films).to.have.lengthOf(25);
                 })
@@ -34,7 +34,7 @@ describe('filmRepository', function () {
 
     describe('findFilmsLanguage', function(){
         it('should return list of films', function(){
-                 return repo.findFilmsByLanguage(1).then(fl=>{
+                 return repo.findByLanguage(1).then(fl=>{
                 expect(fl).to.have.length.above(1);
             })
         });
@@ -43,7 +43,7 @@ describe('filmRepository', function () {
 
     describe('findFilmsByCategory', function(){
         it('should return list of films for a category', function(){
-                 return repo.findFilmsByCategory(6).then(fl=>{
+                 return repo.findByCategory(6).then(fl=>{
                 expect(fl).to.have.length.above(1);
             })
         });
