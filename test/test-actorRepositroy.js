@@ -4,13 +4,13 @@ let repo = require('../repository/actor');
 describe('actorRepository', function () {
     describe('findByName', function () {
         it('should return three records for name NICK', function () {
-            return repo.findByName('NICK').then(f => {
+            return repo.name.findByFirstName('NICK').then(f => {
                 expect(f).to.have.lengthOf(3);
             });
         });
 
         it('should return an empty array for name SDFGD', function () {
-            return repo.findByName('SDFGD').then(f => {
+            return repo.name.findByFirstName('SDFGD').then(f => {
                 expect(f).to.be.an('array').that.is.empty;
             });
         });

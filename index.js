@@ -1,6 +1,30 @@
 let repo = require('./repository/film');
 let actorRepo = require('./repository/actor');
-let storeRepo = require('./repository/storeRepository');
+let storeRepo = require('./repository/store');
+
+/*
+actorRepo.insert('Dre', 'Parker').then(a=>{
+    console.log(a);
+})
+*/
+
+actorRepo.name.findByFirstName('Dre').then(a=>{
+    a[0].update({
+        last_name: 'Paarker'
+    }).then(u=>{
+        console.log(u);
+    })
+});
+
+actorRepo.name.findByFullName('Dre', 'Paarker').then(a=>{
+    a.update({
+        last_name: 'Parker'
+    }).then(u=>{
+        console.log(u);
+    })
+});
+
+
 
 repo.findByTitle('NECKLACE').then(f=>{
              console.log(f[0].title);
@@ -72,6 +96,6 @@ storeRepo.findByTitleInInventory('ACADEMY DINOSAUR').then(f=> {
 */
 
 
-actorRepo.findActorsByFilmId(1).then(f=>{
+actorRepo.findByFilmId(1).then(f=>{
     console.log(f.length);
 });
